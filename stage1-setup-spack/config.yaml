@@ -1,0 +1,10 @@
+config:
+  install_tree:
+    root: $spack/opt/spack
+  build_jobs: 32
+  build_stage:
+    - $spack/var/spack-stage
+  install_hash_length: 7
+  source_cache: $spack/var/cache
+  dirty: false
+  verify_ssl: true

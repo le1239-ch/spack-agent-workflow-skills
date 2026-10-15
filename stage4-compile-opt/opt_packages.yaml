@@ -1,0 +1,50 @@
+# 优化版 packages.yaml — 阶段4 产出
+# 在阶段1基础上注入优化 flag，不污染官方 recipe
+# 由 compile_opt.sh 自动更新
+
+packages:
+  # ── 全局编译器与架构偏好 ──────────────────────────────────────────────────
+  all:
+    compiler: [bisheng, gcc]
+    target: [aarch64]
+    providers:
+      # ⚠ 只能写真实 provides 该 virtual 的包：
+      #   kpblas → blas   kplapack → lapack   hmpi → mpi
+      #   kpkml 是元包、无 provides()，写在这里不生效（且会被默认的 openblas 掩盖）
+      blas: [kpblas]
+      lapack: [kplapack]
+      mpi: [hmpi]
+    # 以下为推荐全局 flag（通过 spack config add 注入）
+    # ⚠ -flto 会禁用 SVE 自动向量化，不要加
+    # ⚠ -ffast-math 对含 LAPACK 的科学软件不安全
+    # ✅ GCC 默认 FP 语义最优
+
+  # ── 鲲鹏数学库及优化组件（14个包） ────────────────────────────────────────
+  # provider 指向已上移到 all.providers（必须用真实 provides 的包，见上方注释）。
+  # 子组件：kpblas/kpspblas(基础·稀疏BLAS)、kplapack/kpscalapack/kpscasolver/kpsolver(LAPACK 系列)、
+  #        kpfft/kpfftw(FFT)、kpvml/kpksvml(向量)、kpkupl(通用性能库)、hmpi(MPI)、hpckit(套件元包)、
+  #        kpkml(聚合元包——只在 package.py 里 depends_on 用，不能作 provider)
+
+  # ── FFTW: OpenMP + 共享库 ──────────────────────────────────────────────────
+  fftw:
+    variants: +openmp +shared
+
+  # ── OpenMPI: 启用 pmi/cxx/fortran ─────────────────────────────────────────
+  openmpi:
+    variants: +pmi +cxx +fortran
+
+  # ── GROMACS: MPI 无 CUDA, Release 构建 ────────────────────────────────────
+  gromacs:
+    variants: +mpi ~cuda build_type=Release
+
+  # ── LAMMPS: MPI + manybody + molecule ──────────────────────────────────────
+  lammps:
+    variants: +mpi +manybody +molecule
+
+  # ── PETSc: MPI + HDF5 + MUMPS + Hypre ─────────────────────────────────────
+  petsc:
+    variants: +mpi +hdf5 +mumps +hypre
+
+  # ── Trilinos: MPI + HDF5 + MUMPS ──────────────────────────────────────────
+  trilinos:
+    variants: +mpi +hdf5 +mumps

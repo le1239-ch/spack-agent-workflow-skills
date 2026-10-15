@@ -1,0 +1,21 @@
+# Stage3 → Stage3.5 移交清单
+
+> 由 stage3 执行 Agent 生成。
+> 以下包在 stage3 中安装失败，需 stage3.5 手动编译。
+> **⚠ 关键阻塞**：NAMD 源码包是 license-gated 下载（需 UIUC 注册账号 UserID/AccessCode），
+> **stage3.5 手动编译同样需要先拿到 tarball**。请用户手动下载：
+>
+> 下载入口：https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD
+> 选择 "Version 3.0.3 (2026-07-24)" → "Source Code"（ArchiveID=1767，需登录/注册）
+> 放置路径：`/home/zhangyuhang/workflow/stage3-install/NAMD_3.0.3_Source.tar.gz`
+>
+> tarball 就位后：
+> 1. `sha256sum NAMD_3.0.3_Source.tar.gz` 填入本地 package.py 的占位处
+>    （`/home/zhangyuhang/workflow/spack-workflow/kunpeng920F-repo/spack_repo/kunpeng920f_workflow/packages/namd/package.py`）
+> 2. 重跑 `spack install namd@3.0.3 %gcc` / `%llvm` 即可（全部依赖已预建完成）
+> 3. 或按 stage3.5 流程手动编译
+
+| 包名 | 编译器 | 版本 | spec | 失败原因 | 源码URL | 本地package.py |
+|------|--------|------|------|---------|---------|---------------|
+| namd | gcc | 3.0.3 | namd@3.0.3 %gcc | 依赖链已全部安装成功（tcl@8.6.17/charmpp@8.0.0/fftw@3.3.10）；namd 本体 fetch 失败：源码包 license 门禁需 UIUC 账号下载，本机无 tarball，且本地 package.py 的 3.0.3 版本 sha256 为占位值待填 | https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD (ArchiveID=1767) | /home/zhangyuhang/workflow/spack-workflow/kunpeng920F-repo/spack_repo/kunpeng920f_workflow/packages/namd/package.py |
+| namd | bisheng | 3.0.3 | namd@3.0.3 %llvm | 同上（%llvm 腿，依赖链预建中/完成后同状态） | https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD (ArchiveID=1767) | /home/zhangyuhang/workflow/spack-workflow/kunpeng920F-repo/spack_repo/kunpeng920f_workflow/packages/namd/package.py |

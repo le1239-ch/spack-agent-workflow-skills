@@ -1,0 +1,9 @@
+packages:
+  all:
+    target: [aarch64]
+    providers:
+      blas: [kpblas]
+      lapack: [kplapack]
+      mpi: [hmpi]
+  hpckit:
+    require: "@26.0.RC1"

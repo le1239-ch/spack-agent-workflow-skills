@@ -1,0 +1,7 @@
+==> Warning: package repository $spack/var/spack/repos/builtin is disabled due to: No repo.yaml found in '$spack/var/spack/repos/builtin'
+[ ] wefpq24 gromacs@2024.6 staging (0s)
+[ ] wefpq24 gromacs@2024.6 cmake (6s)
+[ ] wefpq24 gromacs@2024.6 build (1m11s)
+[ ] wefpq24 gromacs@2024.6 install (6m39s)
+[+] wefpq24 gromacs@2024.6 /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/opt/spack/linux-aarch64/gromacs-2024.6-wefpq24 (6m44s)
+INSTALL_EXIT=0

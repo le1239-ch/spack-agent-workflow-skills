@@ -1,0 +1,27 @@
+==> Warning: package repository $spack/var/spack/repos/builtin is disabled due to: No repo.yaml found in '$spack/var/spack/repos/builtin'
+[ ] lszkqjq tcl@8.6.17 staging (0s)
+[ ] lszkqjq tcl@8.6.17 autoreconf (1s)
+[ ] lszkqjq tcl@8.6.17 configure (1s)
+[ ] de5bsnf charmpp@8.0.0 staging (1s)
+[ ] de5bsnf charmpp@8.0.0 install (2s)
+[ ] lszkqjq tcl@8.6.17 build (48s)
+[ ] lszkqjq tcl@8.6.17 install (5m27s)
+[+] lszkqjq tcl@8.6.17 /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/opt/spack/linux-aarch64/tcl-8.6.17-lszkqjq (5m44s)
+[+] de5bsnf charmpp@8.0.0 /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/opt/spack/linux-aarch64/charmpp-8.0.0-de5bsnf (7m55s)
+[ ] 2xbe5gk namd@3.0.3 staging (1s)
+[x] 2xbe5gk namd@3.0.3 failed: /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/var/spack-stage/root/spack-stage-namd-3.0.3-2xbe5gkj4lgab6wtifx5wglzfajaiyoj-h6_wuavn.log (1s)
+-- lines 1 to 11 --
+> ==> Warning: /root/.spack/package_repos/fncqgg4/repos/spack_repo/builtin/packages/tcl/package.py:170: spack.package.is_system_path is deprecated
+  Traceback (most recent call last):
+    File "/home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/lib/spack/spack/fetch_strategy.py", line 1448, in verify_checksum
+      checker = crypto.Checker(digest)
+    File "/home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/lib/spack/spack/util/crypto.py", line 125, in __init__
+      self.hash_fun = hash_fun_for_digest(hexdigest)
+    File "/home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/lib/spack/spack/util/crypto.py", line 79, in hash_fun_for_digest
+      return hash_fun_for_algo(hash_algo_for_digest(hexdigest))
+    File "/home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/lib/spack/spack/util/crypto.py", line 73, in hash_algo_for_digest
+      raise ValueError(f"Spack knows no hash algorithm for this digest: {hexdigest}")
+  ValueError: Spack knows no hash algorithm for this digest: PLACEHOLDER_FILL_AFTER_TARBALL
+==> Error: The following packages failed to install:
+namd@3.0.3/2xbe5gkj4lgab6wtifx5wglzfajaiyoj: /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/var/spack-stage/root/spack-stage-namd-3.0.3-2xbe5gkj4lgab6wtifx5wglzfajaiyoj-h6_wuavn.log
+INSTALL_EXIT=1

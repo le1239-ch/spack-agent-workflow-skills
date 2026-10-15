@@ -1,0 +1,7 @@
+==> Warning: package repository $spack/var/spack/repos/builtin is disabled due to: No repo.yaml found in '$spack/var/spack/repos/builtin'
+[ ] 7qlegwa gromacs@2025.3 staging (1s)
+[ ] 7qlegwa gromacs@2025.3 cmake (7s)
+[ ] 7qlegwa gromacs@2025.3 build (1m33s)
+[ ] 7qlegwa gromacs@2025.3 install (7m45s)
+[+] 7qlegwa gromacs@2025.3 /home/zhangyuhang/workflow/spack-workflow/spack-1.2.1/opt/spack/linux-aarch64/gromacs-2025.3-7qlegwa (7m53s)
+INSTALL_EXIT=0
